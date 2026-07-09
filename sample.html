@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .news-inquiry-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .news-column {
+        border-right: 2px solid #f0c37c;
+      }
+
+      .news-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .news-thumb {
+        width: 210px;
+        height: 125px;
+        object-fit: cover;
+      }
+    </style>
+
+    <div class="container news-inquiry-section" id="news-inquiry-section">
+      <div class="row g-5">
+        <div class="col-lg-6 news-column">
+          <div class="section-title news-title">
+            <h5>Latest News & Updates</h5>
+          </div>
+          <div class="news-item">
+            <img
+              src="./future-tech/stainless-ghee.png"
+              class="news-thumb"
+              alt=""
+            />
+            <div class="news-text">
+              <h5>Benefits of Stainless Steel Machines in Dairy Industry</h5>
+              <p class="text-muted mb-2">July 20, 2024</p>
+              <a href="#" class="read-more"> READ MORE </a>
+            </div>
+          </div>
+          <hr class="news-divider" />
+          <div class="news-item">
+            <img
+              src="./future-tech/butterextruder2.jpg"
+              class="news-thumb"
+              alt=""
+            />
+            <div class="news-text">
+              <h5>How to Increase Efficiency in Dairy Processing</h5>
+              <p class="text-muted mb-2">July 10, 2024</p>
+              <a href="#" class="read-more"> READ MORE </a>
+            </div>
+          </div>
+          <button class="btn orange-btn">VIEW ALL NEWS</button>
+        </div>
+
+        <!-- Inquiry Form -->
+        <div class="col-lg-6 inquiry-column">
+          <div class="section-title inquiry-title">
+            <h5>Send Us An Inquiry</h5>
+          </div>
+          <form class="inquiry-form">
+            <input type="text" class="form-control" placeholder="Your Name" />
+            <input type="tel" class="form-control" placeholder="Phone Number" />
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email Address"
+            />
+            <select class="form-select">
+              <option selected>Select Product</option>
+              <option>Milk Processing Plant</option>
+              <option>Cheese Making Plant</option>
+              <option>Butter & Ghee Plant</option>
+            </select>
+            <textarea
+              class="form-control"
+              rows="4"
+              placeholder="Your Message"
+            ></textarea>
+            <button type="submit" class="btn orange-btn">SUBMIT NOW</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
