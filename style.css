@@ -9,6 +9,29 @@
   --primarycolor: orange;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+.container,
+.container-fluid,
+.row > * {
+  min-width: 0;
+}
+
 /* Navigation */
 .site-header {
   background-color: #fff;
@@ -24,12 +47,42 @@
   align-items: center;
   gap: 28px;
   min-height: 86px;
+  padding: 0 20px;
 }
 
 .site-logo img {
   width: 230px;
   max-width: 100%;
   height: auto;
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.navbar-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #202020;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .site-nav-links {
@@ -66,6 +119,7 @@
   border-radius: 4px;
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .quote-btn:hover {
@@ -73,37 +127,50 @@
   color: #fff;
 }
 
-@media (max-width: 991px) {
-  .site-navbar {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  .site-nav-links {
-    order: 3;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    gap: 16px 22px;
-  }
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 575px) {
-  .site-logo img {
-    width: 190px;
-  }
+.navbar > .container-fluid {
+  gap: 14px;
+  max-width: 1180px;
+  padding-inline: clamp(12px, 2vw, 24px);
+}
 
-  .site-nav-links a {
-    font-size: 13px;
-  }
+.navbar .site-logo {
+  flex: 0 0 auto;
+}
 
-  .quote-btn {
-    min-width: 120px;
-    min-height: 38px;
-    padding: 8px 14px;
-  }
+.navbar .site-logo img {
+  width: clamp(150px, 18vw, 230px);
+}
+
+.navbar-nav {
+  align-items: center;
+  gap: clamp(4px, 0.8vw, 14px);
+}
+
+.navbar .nav-link {
+  color: #202020;
+  font-size: clamp(12px, 1vw, 13px);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.navbar .nav-link:hover {
+  color: var(--primarycolor);
+}
+
+.navbar .d-flex {
+  margin-left: auto;
+}
+
+.navbar-toggler {
+  flex: 0 0 auto;
 }
 
 .card-img-top {
@@ -139,21 +206,25 @@
 }
 
 #welcome-img {
-  /* margin: 35px; */
   margin-top: 60px;
   box-shadow: 1px 3px 40px -3px rgba(189, 178, 178, 1);
   border-radius: 8px;
   height: 550px;
-  /* width: 1000px; */
+  width: 100%;
+  object-fit: cover;
 }
 
 .grid1 {
   width: 100%;
-  height: 230px;
-  padding-top: 30px;
+  min-height: 230px;
+  padding: 30px 20px;
   text-align: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.43);
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid1 img {
@@ -171,14 +242,17 @@
 } */
 
 .grid {
-  padding-top: 50px;
+  padding: 50px 20px;
   margin-left: 5px;
   align-items: center;
   text-align: center;
   box-shadow: 0px 4px 20px 0px #828181de;
   border-radius: 12px;
-  height: 250px;
+  min-height: 250px;
   width: 96%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .grid img {
@@ -189,12 +263,11 @@
 
 .eng {
   text-align: center;
-  padding-bottom: 30px;
-  padding-top: 20px;
-  margin-bottom: 5px;
-  margin-top: 20px;
+  padding: 20px 15px 30px;
+  margin: 20px 0 5px;
   font-family: cursive;
   text-transform: uppercase;
+  font-size: 24px;
 }
 
 /* Our Gallery */
@@ -212,7 +285,7 @@
 }
 
 .gallery-center {
-  height: 330px;
+  min-height: 330px;
   background: #183946;
   color: #fff;
   display: flex;
@@ -220,11 +293,17 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  padding: 20px;
 }
 
 .gallery-center img {
   width: 70px;
   margin-bottom: 20px;
+}
+
+.gallery-center h3 {
+  font-size: 24px;
+  margin: 5px 0;
 }
 
 /* /News and Form Section/ */
@@ -243,6 +322,7 @@
 
 .news-column {
   border-right: 2px solid #f0c37c;
+  padding-right: 30px;
 }
 
 .inquiry-column {
@@ -253,12 +333,15 @@
   display: flex;
   align-items: flex-start;
   gap: 30px;
+  margin-bottom: 20px;
 }
 
 .news-thumb {
   width: 210px;
   height: 125px;
   object-fit: cover;
+  border-radius: 5px;
+  flex-shrink: 0;
 }
 
 .news-text h5 {
@@ -284,7 +367,7 @@
   font-weight: 700 !important;
   box-shadow: -2px -1px 0px -2px rgba(0, 0, 0, 0.1);
   margin-top: 60px;
-  border-radius: none;
+  border-radius: 4px;
   padding: 10px 20px;
 }
 
@@ -313,7 +396,7 @@
 }
 
 .otp {
-  padding: 40px;
+  padding: 40px 20px;
   width: 100%;
 }
 
@@ -323,16 +406,17 @@
   color: white;
   font-family: Franklin Gothic Medium;
   font-size: 30px;
+  margin-bottom: 30px;
 }
 
 .true-partner {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
   margin-bottom: 0;
-  gap: 40px;
+  gap: 30px;
 }
 
 .true-partner img {
@@ -452,6 +536,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #c7d2d8;
   font-size: 14px;
+  flex-wrap: wrap;
 }
 
 .footer-bottom p {
@@ -463,6 +548,427 @@
   gap: 28px;
 }
 
+/* Responsive hardening */
+body > section {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+  overflow: hidden;
+}
+
+.carousel-item img {
+  height: clamp(220px, 42vw, 520px);
+  object-fit: cover;
+}
+
+.card {
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-wrap: anywhere;
+}
+
+.card-body .btn {
+  margin-top: auto;
+}
+
+.grid,
+.grid1 {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin-left: 0;
+  overflow-wrap: anywhere;
+}
+
+.grid img,
+.grid1 img {
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+}
+
+#welcome-img {
+  height: clamp(260px, 38vw, 550px);
+}
+
+#gallery-section .row {
+  align-items: stretch;
+}
+
+.gallery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 100%;
+}
+
+.gallery-grid img {
+  min-width: 0;
+}
+
+.gallery-center {
+  height: 100%;
+}
+
+.news-text,
+.footer-about,
+.footer-links a,
+.footer-contact,
+.footer-contact a,
+.footer-bottom {
+  overflow-wrap: anywhere;
+}
+
+/* ==================================================
+   Responsive Media Queries
+   ================================================== */
+
+/* ---------- Legacy nav tablet and below - max-width 991px ---------- */
+@media (max-width: 991px) {
+  .site-navbar {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+    gap: 16px;
+  }
+
+  .navbar-toggle {
+    display: flex;
+    order: 2;
+  }
+
+  .site-nav-links {
+    order: 3;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 16px 22px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .site-nav-links.active {
+    max-height: 400px;
+  }
+
+  .quote-btn {
+    order: 4;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+/* ---------- Legacy nav mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .site-logo img {
+    width: 160px;
+  }
+
+  .site-nav-links a {
+    font-size: 12px;
+  }
+
+  .quote-btn {
+    min-width: 100%;
+    min-height: 38px;
+    padding: 8px 14px;
+  }
+}
+
+/* ---------- Bootstrap navbar tablet and below - max-width 991.98px ---------- */
+@media (max-width: 991.98px) {
+  .navbar {
+    padding: 8px 0;
+  }
+
+  .navbar > .container-fluid {
+    gap: 10px;
+  }
+
+  .navbar-collapse {
+    width: 100%;
+    padding-top: 12px;
+  }
+
+  .navbar-nav {
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .navbar .nav-link {
+    padding: 10px 0;
+    white-space: normal;
+  }
+
+  .navbar .d-flex {
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .navbar .quote-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* ---------- Bootstrap navbar mobile - max-width 575.98px ---------- */
+@media (max-width: 575.98px) {
+  .navbar .site-logo img {
+    width: 145px;
+  }
+}
+
+/* ---------- Product cards tablet - max-width 768px ---------- */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 180px;
+  }
+}
+
+/* ---------- Product cards mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .card-img-top {
+    height: 150px;
+  }
+}
+
+/* ---------- Welcome section tablet and below - max-width 991px ---------- */
+@media (max-width: 991px) {
+  .one h5 {
+    margin-top: 30px;
+    font-size: 22px;
+  }
+
+  .one h3 {
+    font-size: 28px;
+  }
+
+  .one p {
+    font-size: 15px;
+  }
+
+  #welcome-img {
+    margin-top: 40px;
+    height: 350px;
+  }
+}
+
+/* ---------- Welcome section mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .one h5 {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .one h3 {
+    font-size: 22px;
+  }
+
+  .one p {
+    font-size: 14px;
+  }
+
+  #welcome-img {
+    margin-top: 30px;
+    height: 250px;
+  }
+
+  .grid1 {
+    min-height: auto;
+    width: 80%;
+    /* align-items: center; */
+    /* padding-right: 100%; */
+    /* padding-left: 100%; */
+    /* padding: 20px 15px; */
+  }
+
+  .grid1 img {
+    height: 60px;
+  }
+}
+
+/* ---------- Service boxes tablet - max-width 768px ---------- */
+@media (max-width: 768px) {
+  .grid {
+    min-height: auto;
+    padding: 30px 20px;
+  }
+
+  .eng {
+    font-size: 20px;
+    padding: 15px 10px 25px;
+  }
+}
+
+/* ---------- Service boxes mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .grid {
+    padding: 20px 15px;
+  }
+
+  .grid img {
+    height: 50px;
+  }
+
+  .eng {
+    font-size: 18px;
+    padding: 15px 10px 20px;
+  }
+}
+
+/* ---------- Gallery tablet - max-width 768px ---------- */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid img {
+    height: 200px;
+  }
+
+  .gallery-center {
+    min-height: 250px;
+  }
+
+  .gallery-center h3 {
+    font-size: 20px;
+  }
+}
+
+/* ---------- Gallery mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .gallery-grid img {
+    height: 150px;
+  }
+
+  .gallery-center {
+    min-height: 200px;
+    padding: 15px;
+  }
+
+  .gallery-center img {
+    width: 50px;
+  }
+
+  .gallery-center h3 {
+    font-size: 18px;
+  }
+}
+
+/* ---------- News and inquiry tablet - max-width 768px ---------- */
+@media (max-width: 768px) {
+  .news-column {
+    border-right: none;
+    border-bottom: 2px solid #f0c37c;
+    padding-right: 0;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+
+  .inquiry-column {
+    padding-left: 0;
+  }
+
+  .news-item {
+    gap: 15px;
+  }
+
+  .news-thumb {
+    width: 150px;
+    height: 100px;
+  }
+
+  .section-title h5 {
+    font-size: 22px;
+  }
+}
+
+/* ---------- News and inquiry mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .news-inquiry-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .news-thumb {
+    width: 100%;
+    height: 150px;
+  }
+
+  .section-title h5 {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .orange-btn {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .inquiry-form .form-control,
+  .inquiry-form .form-select {
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- Partner logos tablet - max-width 768px ---------- */
+@media (max-width: 768px) {
+  .otp {
+    padding: 30px 20px;
+  }
+
+  .otp h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .true-partner {
+    gap: 20px;
+  }
+
+  .true-partner img {
+    width: 130px;
+    height: 80px;
+  }
+}
+
+/* ---------- Partner logos mobile - max-width 575px ---------- */
+@media (max-width: 575px) {
+  .otp {
+    padding: 20px 15px;
+  }
+
+  .otp h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .true-partner {
+    gap: 15px;
+  }
+
+  .true-partner img {
+    width: 100px;
+    height: 65px;
+  }
+}
+
+/* ---------- Footer tablet and below - max-width 991px ---------- */
 @media (max-width: 991px) {
   .footer-brand {
     padding-right: 0;
@@ -472,12 +978,39 @@
     min-height: auto;
     padding-left: 0;
     border-left: none;
+    margin-bottom: 20px;
   }
 }
 
+/* ---------- Footer tablet - max-width 768px ---------- */
+@media (max-width: 768px) {
+  .footer-main {
+    padding: 40px 0 28px;
+  }
+
+  .footer-logo {
+    width: 200px;
+  }
+
+  .footer-title {
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: 12px;
+  }
+
+  .footer-about {
+    font-size: 14px;
+  }
+}
+
+/* ---------- Footer mobile - max-width 575px ---------- */
 @media (max-width: 575px) {
   .footer-main {
-    padding: 42px 0 28px;
+    padding: 30px 0 20px;
   }
 
   .footer-bottom,
@@ -485,5 +1018,82 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .footer-logo {
+    width: 180px;
+  }
+
+  .footer-title {
+    font-size: 14px;
+  }
+
+  .footer-about {
+    font-size: 13px;
+  }
+
+  .footer-contact span {
+    font-size: 12px;
+  }
+}
+
+/* ---------- Responsive hardening tablet and below - max-width 991.98px ---------- */
+@media (max-width: 991.98px) {
+  .one h5 {
+    margin-top: 28px;
+  }
+
+  #welcome-img {
+    margin-top: 28px;
+  }
+
+  .gallery-grid img {
+    height: clamp(140px, 24vw, 210px);
+  }
+
+  .gallery-center {
+    min-height: 210px;
+  }
+
+  .news-column {
+    border-right: none;
+    border-bottom: 2px solid #f0c37c;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+  }
+
+  .inquiry-column {
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+}
+
+/* ---------- Responsive hardening mobile - max-width 575.98px ---------- */
+@media (max-width: 575.98px) {
+  body > section.py-5 {
+    padding-top: 1rem !important;
+  }
+
+  .carousel-item img {
+    height: 210px;
+  }
+
+  .grid1 {
+    max-width: 360px;
+    margin-inline: auto;
+    padding: 22px 16px;
+  }
+
+  .grid img,
+  .grid1 img {
+    max-width: 64px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid img {
+    height: 155px;
   }
 }
