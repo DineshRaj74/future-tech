@@ -2,39 +2,13 @@
 future-tech
 # Future Tech – Food & Dairy Machinery Website
 
-A responsive business website built for **Future Tech**, a company specializing in food and dairy processing machinery. The website showcases the company's products, services, gallery, latest news, and contact information with a clean and modern user interface.
+A responsive business website developed as part of a *real-world Web Development Internship* for *Future Tech*, a company specializing in food and dairy processing machinery. The website showcases the company's products, services, gallery, latest news, and contact information through a clean, modern, and fully responsive user interface built with HTML5, CSS3, Bootstrap 5, and JavaScript.
 
 ---
-
-## 🌐 Live Demo
-
-> Add your deployed website URL here
-
-Example:
-https://future-tech.onrender.com
-
----
-
 ## 📂 GitHub Repository
-
 https://github.com/DineshRaj74/future-tech
 
 ---
-
-## 📸 Preview
-
-> Add screenshots inside a `screenshots` folder.
-
-Example:
-
-- Home Page
-- Products Section
-- Gallery
-- Contact Section
-- Mobile Responsive View
-
----
-
 # 🚀 Features
 
 - Responsive Navigation Bar
