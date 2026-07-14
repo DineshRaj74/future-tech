@@ -1,5 +1,5 @@
 # future-tech
-future-tech
+Future-tech
 # Future Tech – Food & Dairy Machinery Website
 
 A responsive business website developed as part of a *real-world Web Development Internship* for *Future Tech*, a company specializing in food and dairy processing machinery. The website showcases the company's products, services, gallery, latest news, and contact information through a clean, modern, and fully responsive user interface built with HTML5, CSS3, Bootstrap 5, and JavaScript.
